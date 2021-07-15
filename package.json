@@ -1,14 +1,23 @@
 {
-  "name": "mini-project",
+  "name": "readme-generator",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Dru Ludwig",
   "license": "ISC",
   "dependencies": {
     "inquirer": "^6.5.2"
   },
-  "description": ""
+  "description": "A straightforward tool for generating project README files.",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/druludwig/09-README-Generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/druludwig/09-README-Generator/issues"
+  },
+  "homepage": "https://github.com/druludwig/09-README-Generator#readme"
 }
