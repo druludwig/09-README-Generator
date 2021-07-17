@@ -2,3 +2,4 @@
  A straightforward tool for generating project README files.
 
 requiring input to promote best practices
+embedded the video instead of 

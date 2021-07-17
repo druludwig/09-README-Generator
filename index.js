@@ -163,7 +163,7 @@ inquirer.prompt([
 
     const mdPageContent = generateREADME(answers);
     
-    fs.writeFile('./testing/README.md', mdPageContent, (err) =>
+    fs.writeFile('./samples/README.md', mdPageContent, (err) =>
       err ? console.log(err) : console.log('Successfully created README.md!')
     );
   });
