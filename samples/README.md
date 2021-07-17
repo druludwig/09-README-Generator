@@ -17,13 +17,12 @@
   ## Instructions<br />
   Click the “Generate password” button and follow the prompts.<br />
   ## Contributions<br />
-  I owe thanks to fellow students in my study group for their help.<br />
+  I owe thanks to the development community as a whole for their willingness to share solutions and ideas.<br />
   ## Testing<br />
   There are no formal tests used with this project, but you may try a few things out to test the user experience:<br />- Try entering a character value under 8 or above 128.<br />- Try clicking cancel at every prompt. The app will still generate a default 8 character all CAPS password.<br />
   ## License<br />
   Use of this project is subject to the terms and conditions of the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.<br />
   ## Questions<br />
-  - Please email any questions to: <a href="mailto:druludwig@yahoo.com">druludwig@yahoo.com</a>
+  - Please email any questions to: <a href="mailto:druludwig@gmail.com">druludwig@gmail.com</a>
   - Find me on GitHub: <a href="https://github.com/druludwig">druludwig</a><br />
   <br />
-

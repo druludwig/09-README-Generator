@@ -1,7 +1,5 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-let licenseURL;
-let licenseBadge;
 
 // Page content
 const generateREADME = (answers) =>
@@ -33,7 +31,6 @@ const generateREADME = (answers) =>
   - Please email any questions to: <a href="mailto:${answers.email}">${answers.email}</a>
   - Find me on GitHub: <a href="https://github.com/${answers.github}">${answers.github}</a><br />
   <br />
-
 `  
 
 // Prompt user for input.
