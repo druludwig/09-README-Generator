@@ -17,7 +17,7 @@ const generateREADME = (answers) =>
   - [Contributions](#Contributions)
   - [Testing](#Testing)
   - [License](#License)
-  - [Questions](#Questions?)
+  - [Questions](#Questions)
  
   ## Installation<br />
   ${answers.projectInstallation}<br />
@@ -29,7 +29,7 @@ const generateREADME = (answers) =>
   ${answers.projectTesting}<br />
   ## License<br />
   ${answers.projectLicense}<br />
-  ## Questions?<br />
+  ## Questions<br />
   - Please email any questions to: <a href="mailto:${answers.email}">${answers.email}</a>
   - Find me on GitHub: <a href="https://github.com/${answers.github}">${answers.github}</a><br />
   <br />
