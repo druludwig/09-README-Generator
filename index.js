@@ -1,64 +1,133 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+let licenseURL;
 
-const generateHTML = (readmeContent) =>
-  `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <title>${readmeContent.name} | Profile</title>
-</head>
-<body>
-  <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Hi! My name is ${readmeContent.name}</h1>
-    <p class="lead">I am from ${readmeContent.location}.</p>
-    <p class="lead">${readmeContent.biography}.</p>
-    <h3><span class="badge badge-secondary">Contact Me</span></h3>
-    <ul class="list-group">
-      <li class="list-group-item">GitHub: My username is <a href="https://github.com/${readmeContent.github}">${readmeContent.github}</a></li>
-      <li class="list-group-item">LinkedIn: <a href="https://www.linkedin.com/in/${readmeContent.linkedin}">View my LinkedIn</a></li>
-    </ul>
-  </div>
-</div>
-</body>
-</html>`
+// Page content
+const generateREADME = (answers) =>
+  `# ${answers.projectName}
+  [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+  Launch App: <a href="${answers.deployedURL}">${answers.deployedURL}</a><br />
+  ## Description<br />
+  ${answers.projectDescription}<br />
+  ## Installation Instructions<br />
+  ${answers.projectInstallation}<br />
+  ## Usage Instructions<br />
+  ${answers.projectUsage}<br />
+  ## Contributions<br />
+  ${answers.projectContributions}<br />
+  ## Testing<br />
+  ${answers.projectTesting}<br />
+  ## License<br />
+  ${answers.projectLicense}<br />
+`  
 
-inquirer
-  .prompt([
+// Prompt user for input.
+inquirer.prompt([
     {
       type: 'input',
-      name: 'name',
-      message: 'Enter name:',
+      name: 'projectName',
+      message: 'Enter project name:',
+      validate: function (answer) {
+        if (answer.length < 1) {
+            return console.log("This field is required.");
+        }
+        return true;
+      }
     },
     {
       type: 'input',
-      name: 'location',
-      message: 'Enter city:',
+      name: 'deployedURL',
+      message: 'Enter full deployed URL:',
+      validate: function (answer) {
+        if (answer.length < 1) {
+            return console.log("This field is required.");
+        }
+        return true;
+      }
     },
     {
       type: 'input',
-      name: 'biography',
-      message: 'Enter a short Bio:',
+      name: 'projectDescription',
+      message: 'Describe the project (2-3 sentences):',
+      validate: function (answer) {
+        if (answer.length < 1) {
+            return console.log("This field is required.");
+        }
+        return true;
+      }
     },
     {
       type: 'input',
-      name: 'github',
-      message: 'Enter your GitHub Username:',
+      name: 'projectInstallation',
+      message: 'Enter installation instructions:',
+      validate: function (answer) {
+        if (answer.length < 1) {
+            return console.log("This field is required.");
+        }
+        return true;
+      }
     },
     {
       type: 'input',
-      name: 'linkedin',
-      message: 'Enter your LinkedIn username:',
+      name: 'projectUsage',
+      message: 'Enter instructions for use:',
+      validate: function (answer) {
+        if (answer.length < 1) {
+            return console.log("This field is required.");
+        }
+        return true;
+      }
     },
-  ])
+    {
+      type: 'input',
+      name: 'projectContributions',
+      message: 'Which people, libraries, resources, etc. helped development?',
+      validate: function (answer) {
+        if (answer.length < 1) {
+            return console.log("This field is required.");
+        }
+        return true;
+      }
+    },
+    {
+      type: 'input',
+      name: 'projectTesting',
+      message: 'How can end users test this project?',
+      validate: function (answer) {
+        if (answer.length < 1) {
+            return console.log("This field is required.");
+        }
+        return true;
+      }
+    },
+    {
+      type: 'list',
+      choices: ["MIT License", "Apache License", "Mozilla Public License"],
+      name: 'projectLicense',
+      message: 'Choose a license:',
 
-  .then((readmeContent) => {
-    const htmlPageContent = generateHTML(readmeContent);
+    },
+])
 
-    fs.writeFile('index.html', htmlPageContent, (err) =>
-      err ? console.log(err) : console.log('Successfully created index.html!')
+    .then((answers) => {
+    let licenseMarkup = answers.projectLicense
+    
+    if (licenseMarkup == 'MIT License') {
+      answers.projectLicense = `Use of this project is subject to the terms and conditions of the <a href="https://www.mit.edu/~amini/LICENSE.md">MIT License</a>.`
+    }
+    if (licenseMarkup == 'Apache License') {
+      answers.projectLicense = `Use of this project is subject to the terms and conditions of the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.`;
+      licenseURL = `https://opensource.org/licenses/Apache-2.0`
+    }
+    if (licenseMarkup == 'Mozilla Public License') {
+      answers.projectLicense = `Use of this project is subject to the terms and conditions of the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.`
+    }
+
+
+
+    const mdPageContent = generateREADME(answers);
+    
+    fs.writeFile('./testing/README.md', mdPageContent, (err) =>
+      err ? console.log(err) : console.log('Successfully created README.md!')
     );
   });
