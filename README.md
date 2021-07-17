@@ -1,5 +1,5 @@
 # Best Practices README Generator v0.9
-  Launch App: <a href="http://www.meetdru.com/files/readme-generator">http://www.meetdru.com/files/readme-generator</a> <br />
+  Launch demo: <a href="http://www.meetdru.com/files/readme-generator">http://www.meetdru.com/files/readme-generator</a> <br />
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)<br />
   ## Description<br />
   This best practices README generator (which generated this very README) is designed to promote professional and comprehensive README files. All fields are required and displayed on the README, including a prominent license badge.<br />
